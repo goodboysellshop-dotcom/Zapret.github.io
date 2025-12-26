@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapret Public - Форум о программе Zapret</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0088cc 0%, #005e99 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+        
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            color: #0088cc;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+        
+        .telegram-btn i {
+            font-size: 1.5rem;
+        }
+        
+        /* Main Content */
+        .content-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #005e99;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: #0088cc;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .about-program {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .program-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .program-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .program-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .program-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: #0088cc;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #005e99;
+        }
+        
+        /* Forum Info */
+        .forum-info {
+            background-color: #e9f5ff;
+            padding: 50px 0;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .forum-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .forum-content h2 {
+            color: #005e99;
+            margin-bottom: 25px;
+        }
+        
+        .forum-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Tutorial Section */
+        .tutorial-section {
+            background-color: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 60px;
+        }
+        
+        .tutorial-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #f8fbff;
+            border-radius: 15px;
+            border-left: 5px solid #0088cc;
+        }
+        
+        .step-number {
+            background-color: #0088cc;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: #0088cc;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid #2d2d44;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .about-program {
+                flex-direction: column;
+            }
+            
+            .program-image {
+                order: -1;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header с информацией о канале -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1>Zapret Public</h1>
+            <p class="tagline">Telegram-форум, посвященный программе Zapret для обхода блокировок в интернете. Обсуждаем работу программы, делимся опытом и помогаем друг другу.</p>
+            <a href="https://t.me/zapretpublic" target="_blank" class="telegram-btn">
+                <i class="fab fa-telegram"></i>
+                Присоединиться к каналу
+            </a>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">О программе Zapret</h2>
+                
+                <div class="about-program">
+                    <div class="program-info">
+                        <p>Zapret — это программа для обхода блокировок интернет-ресурсов, которая помогает пользователям получать доступ к информации без ограничений.</p>
+                        <p>Программа использует различные технологии для обеспечения свободного доступа в интернет, что особенно актуально в условиях возрастающих ограничений.</p>
+                        <p>Zapret разрабатывается с учетом удобства пользователей и предоставляет различные методы обхода блокировок, подходящие для разных уровней технической подготовки.</p>
+                    </div>
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Иллюстрация программы для обхода блокировок">
+                    </div>
+                </div>
+                
+                <div class="program-features">
+                    <div class="feature">
+                        <i class="fas fa-unlock-alt"></i>
+                        <h3>Обход блокировок</h3>
+                        <p>Доступ к заблокированным ресурсам через различные технологии обхода ограничений.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Высокая скорость</h3>
+                        <p>Оптимизированные алгоритмы обеспечивают высокую скорость соединения при обходе блокировок.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Безопасность</h3>
+                        <p>Защита данных и безопасное соединение с использованием современных технологий шифрования.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="forum-info">
+            <div class="container">
+                <div class="forum-content">
+                    <h2>Наш Telegram-форум</h2>
+                    <p>В нашем Telegram-канале <strong>Zapret Public</strong> вы найдете:</p>
+                    <p>• Актуальные новости о разработке и обновлениях программы</p>
+                    <p>• Обсуждения работы Zapret на различных устройствах</p>
+                    <p>• Помощь в настройке и решении проблем</p>
+                    <p>• Обмен опытом и полезными советами</p>
+                    <p>• Обсуждение вопросов интернет-безопасности</p>
+                    <a href="https://t.me/zapretpublic" target="_blank" class="telegram-btn" style="margin-top: 30px;">
+                        <i class="fab fa-telegram"></i>
+                        Перейти в Telegram-канал
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Секция с инструкциями -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Как начать использовать Zapret</h2>
+                
+                <div class="tutorial-section">
+                    <div class="tutorial-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h3>Скачайте программу</h3>
+                                <p>Загрузите актуальную версию Zapret с официального источника или из нашего Telegram-канала.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h3>Настройте подключение</h3>
+                                <p>Выберите оптимальный метод обхода блокировок в зависимости от вашей ситуации и потребностей.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h3>Присоединяйтесь к сообществу</h3>
+                                <p>Заходите в наш Telegram-канал для получения помощи, советов и обсуждения нововведений.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zapret Public</h3>
+                    <p>Telegram-форум, посвященный программе Zapret для обхода интернет-блокировок.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Присоединяйтесь к нашему Telegram-каналу для обсуждений и вопросов:</p>
+                    <a href="https://t.me/zapretpublic" target="_blank" style="color: #0088cc; text-decoration: none; font-weight: bold;">@zapretpublic</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Сайт создан для информационной поддержки Telegram-канала.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
